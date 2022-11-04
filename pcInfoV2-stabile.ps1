@@ -53,18 +53,18 @@ function all {
     $rdisk = Get-Volume
     $disk = $rdisk | Out-String
     $disk = $rdisk | Out-String
-    Write-Host $disk
+    #Write-Host $disk
 
     $ros = Get-WmiObject -Class Win32_OperatingSystem
     $rosversion = Get-WmiObject -Class Win32_OperatingSystem
     $OsVersjon = $rosversion.Version
     ## combine the caption of the operating system with the version of the operating system
     $os = $ros.Caption + " " + $OsVersjon
-    write-host $os
+    #write-host $os
 
     $rcpu = Get-WmiObject -Class Win32_Processor
     $cpu = $rcpu.Name
-    Write-Host $cpu
+    #Write-Host $cpu
 
     $rram = Get-WmiObject -Class Win32_ComputerSystem
     $ram = $rram.TotalPhysicalMemory
@@ -72,11 +72,11 @@ function all {
     [string]$GB = "GB"
     [string]$ramout = 'ram'
     $out = [string]$ramGB + $GB +' ' + $ramout
-    Write-Host $out
+    #Write-Host $out
 
     $rdomain = Get-WmiObject -Class Win32_ComputerSystem
-    $domain = $rdomain.Domain
-    Write-Host $domain
+    #$domain = $rdomain.Domain
+    Write-Host $domain $out $cpu $os $disk
     
 
 }
