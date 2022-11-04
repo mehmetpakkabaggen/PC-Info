@@ -48,6 +48,40 @@ function diskFunction {
 }
 
 
+function all {
+    $rdisk = Get-Volume
+    $rdisk = Get-Volume
+    $disk = $rdisk | Out-String
+    $disk = $rdisk | Out-String
+    Write-Host $disk
+
+    $ros = Get-WmiObject -Class Win32_OperatingSystem
+    $rosversion = Get-WmiObject -Class Win32_OperatingSystem
+    $OsVersjon = $rosversion.Version
+    ## combine the caption of the operating system with the version of the operating system
+    $os = $ros.Caption + " " + $OsVersjon
+    write-host $os
+
+    $rcpu = Get-WmiObject -Class Win32_Processor
+    $cpu = $rcpu.Name
+    Write-Host $cpu
+
+    $rram = Get-WmiObject -Class Win32_ComputerSystem
+    $ram = $rram.TotalPhysicalMemory
+    $ramGB = [math]::Round($ram / 1GB, 0)
+    [string]$GB = "GB"
+    [string]$ramout = 'ram'
+    $out = [string]$ramGB + $GB +' ' + $ramout
+    Write-Host $out
+
+    $rdomain = Get-WmiObject -Class Win32_ComputerSystem
+    $domain = $rdomain.Domain
+    Write-Host $domain
+    
+
+}
+
+
 
     $menu = @(
         "Domain"
@@ -65,7 +99,8 @@ $options = @{
     "Ram" = {ram}
     "DiskDrive" = {diskFunction}
     "Os" = {os}
-    "All of the above" = {domain; cpu; ram; diskFunction; os;}   
+   # "All of the above" = {domain; cpu; ram; diskFunction; os;}  
+   "All of the above" = {all} 
 }
 
 
@@ -73,7 +108,7 @@ $options = @{
 # A menu that lets the user choose what he wants to see.
 write-host $menu
    
-$choice = read-host "Hva vil du se?"
+$choice = read-host "what do you want to see?"
     
 $options[$choice] | Invoke-Expression
 
