@@ -1,5 +1,5 @@
-<#Programm som lar brukeren velge hvilke typer ting han vil se om pcen. han kan velge mellom å se domeme navn, ram mengde i gigabyte, 
-hvilke prosessor pcen har, hvilket os som den skjører på samt med versjonen av os-en, alle diskene på pcen.#>
+<#Program that allows the user to choose the types of things he wants to see about the PC. he can choose between seeing the domain name, the amount of RAM in gigabytes,
+which processor the PC has, which OS it runs on as well as the version of the OS, all the disks on the PC.#>
 
 
 
@@ -50,22 +50,22 @@ function diskFunction {
 
 
     $menu = @(
-        "Domene"
+        "Domain"
         "Cpu"
         "Ram"
-        "Disk"
+        "DiskDrive"
         "Os"
-        "Alle"
+        "All of the above"
 
     )
 $options = @{
 
-    "Domene" = {domain}
+    "Domain" = {domain}
     "Cpu" = {cpu}
     "Ram" = {ram}
-    "Disk" = {diskFunction}
+    "DiskDrive" = {diskFunction}
     "Os" = {os}
-    "Alle" = {domain; cpu; ram; diskFunction; os;}   
+    "All of the above" = {domain; cpu; ram; diskFunction; os;}   
 }
 
 
